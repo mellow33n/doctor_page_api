@@ -4,7 +4,8 @@
   "description": "api for doctor page",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "dev": "nodemon server.js"
   },
   "author": "Ihor Parfenenko",
   "license": "ISC",
