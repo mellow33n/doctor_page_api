@@ -4,13 +4,14 @@
   "description": "api for doctor page",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "dev": "nodemon server.js"
   },
   "author": "Ihor Parfenenko",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "helmet": "^7.1.0",
     "mongodb": "^6.2.0",
     "mongoose": "^8.0.1"
   },

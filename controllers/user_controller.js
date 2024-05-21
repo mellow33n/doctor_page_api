@@ -26,15 +26,26 @@ const deleteUserById = (req, res) => {
     })
     .catch((error) => handleError(res, error));
 };
-const addUser = (req, res) => {
-  const user = new User(req.body);
-  user
-    .save()
-    .then((result) => {
-      res.status(201).json(result);
-    })
-    .catch((error) => handleError(res, error));
+const addUser = async (req, res) => {
+  const getUserByTel = await User.find({ tel: `${req.body.tel}` }).then(
+    (result) => result
+  );
+  const isNewUser = getUserByTel[0] ? false : true;
+
+  if (isNewUser) {
+    const user = new User(req.body);
+    user
+      .save()
+      .then((result) => {
+        res.status(201).json(result);
+      })
+      .catch((error) => handleError(res, error));
+  } else {
+    const errMsg = 'Аккаунт з цим номером телефона вже існує';
+    return handleError(res, errMsg)
+  }
 };
+
 const updateUser = (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body)
     .then((result) => {
