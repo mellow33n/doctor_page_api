@@ -18,7 +18,7 @@ router.patch("/users/:id", updateUser);
 
 
 //Login
-router.get("/login", getLogin);
+router.post("/login", getLogin);
 
 
 module.exports = router;
